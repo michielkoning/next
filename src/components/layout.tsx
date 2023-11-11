@@ -16,9 +16,7 @@ export default function Layout({ children }: { children?: ReactNode }) {
         </CenterWrapper>
       </header>
       <main>
-        <CenterWrapper>
-          {children}
-        </CenterWrapper>
+        <CenterWrapper>{children}</CenterWrapper>
       </main>
     </>
   )

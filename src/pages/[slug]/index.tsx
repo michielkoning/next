@@ -45,10 +45,7 @@ const RecipeDetails: FunctionComponent<InferGetServerSidePropsType<typeof getSer
     }
   })
 
-
-  return (
-    <RecipesList recipes={initialTodos} />
-  )
+  return <RecipesList recipes={initialTodos} />
 }
 
 export default RecipeDetails

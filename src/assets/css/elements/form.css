@@ -19,7 +19,6 @@ input[type='tel'],
 input[type='url'],
 input[type='password'],
 select {
-
   appearance: none;
   border: 1px solid var(--grey-darken-3);
   background: var(--grey-darken-4);
@@ -29,7 +28,9 @@ select {
   padding: 0.75rem 0.75rem;
   font-size: 1rem;
   font-family: inherit;
-  transition: border-color 0.15s ease-out, background-color 0.1s ease-out;
+  transition:
+    border-color 0.15s ease-out,
+    background-color 0.1s ease-out;
 
   &:disabled {
     background-color: var(--gray-lightest);
