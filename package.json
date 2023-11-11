@@ -3,12 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 5173",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "supabase-gen": "supabase gen types typescript --project-id citvrgpihdclyhkkwfer --schema public > src/types/Supabase.ts "
   },
   "dependencies": {
+    "@passageidentity/passage-elements": "^1.2.1",
+    "@passageidentity/passage-node": "^2.1.2",
+    "@supabase/supabase-js": "^2.12.1",
+    "@types/jsonwebtoken": "^9.0.5",
+    "jsonwebtoken": "^9.0.2",
     "next": "14.0.2",
     "next-pwa": "^5.6.0",
     "react": "^18",
