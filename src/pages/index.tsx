@@ -1,14 +1,14 @@
-import { FunctionComponent, useEffect, useState } from 'react'
+import { FormEvent, FunctionComponent, useEffect, useState } from 'react'
 import Router from 'next/router'
 import { getAuthenticatedUserFromSession } from './../utils/passage'
 import { getSupabase } from '../utils/supabase'
 import { PassageUser } from '@passageidentity/passage-elements/passage-user'
 import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
 import { Tables } from '@/types/Tables'
+import { RecipesList } from '@/components/Recipes/RecipesList/RecipesList'
 
-
-export const getServerSideProps = (async (context) => {
-  const loginProps = await getAuthenticatedUserFromSession(context.req, context.res)
+export const getServerSideProps = (async ({ req, res }) => {
+  const loginProps = await getAuthenticatedUserFromSession(req, res)
 
   if (loginProps?.isAuthorized) {
     const supabase = getSupabase(loginProps.userID)
@@ -26,18 +26,21 @@ export const getServerSideProps = (async (context) => {
       props: {
         isAuthorized: loginProps?.isAuthorized ?? false,
         userID: loginProps?.userID ?? '',
-        initialTodos: [],
+        initialTodos: []
       }
     }
   }
 }) satisfies GetServerSideProps<{
-  isAuthorized: boolean,
-  userID: string,
+  isAuthorized: boolean
+  userID: string
   initialTodos: Tables<'todo'>[]
 }>
 
-
-const Dashboard: FunctionComponent<InferGetServerSidePropsType<typeof getServerSideProps>> = ({ isAuthorized, userID, initialTodos }) => {
+const Dashboard: FunctionComponent<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
+  isAuthorized,
+  userID,
+  initialTodos
+}) => {
   const [todos, setTodos] = useState(initialTodos)
   useEffect(() => {
     if (!isAuthorized) {
@@ -45,9 +48,12 @@ const Dashboard: FunctionComponent<InferGetServerSidePropsType<typeof getServerS
     }
   })
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const data = new FormData(e.target)
+    if (!e.target) {
+      return
+    }
+    const data = new FormData(e.currentTarget)
     const todo = data.get('todo')
     const res = await fetch('/api/addTodo', {
       method: 'POST',
@@ -65,18 +71,14 @@ const Dashboard: FunctionComponent<InferGetServerSidePropsType<typeof getServerS
   }
 
   return (
-    <div >
-      <div >
+    <div>
+      <div>
         <h1>Welcome {userID}! </h1>
         <br></br>
         <button onClick={signOut}>Sign Out</button>
         <br></br>
-        <div >
-          {todos?.length > 0 ? (
-            todos.map((todo) => <li key={todo.id}>{todo.title}</li>)
-          ) : (
-            <p>You have completed all todos!</p>
-          )}
+        <div>
+          <RecipesList recipes={todos} />
         </div>
         <form onSubmit={handleSubmit}>
           <label>

@@ -6,14 +6,14 @@ const getSupabase = (userId?: string) => {
   if (!userId) {
     return createClient<Database>(
       process.env.NEXT_PUBLIC_SUPABASE_URL ?? '',
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? '',
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? ''
     )
   } else {
     const payload = {
       userId,
-      exp: Math.floor(Date.now() / 1000) + 60 * 60,
+      exp: Math.floor(Date.now() / 1000) + 60 * 60
     }
-    const token = jwt.sign(payload, process.env.SUPABASE_JWT_SECRET)
+    const token = jwt.sign(payload, process.env.SUPABASE_JWT_SECRET ?? '')
 
     return createClient<Database>(
       process.env.NEXT_PUBLIC_SUPABASE_URL ?? '',
@@ -21,8 +21,7 @@ const getSupabase = (userId?: string) => {
       {
         global: {
           headers: {
-            Authorization: `Bearer ${token}`,
-
+            Authorization: `Bearer ${token}`
           }
         }
       }

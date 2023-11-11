@@ -1,10 +1,4 @@
-export type Json =
-  | string
-  | number
-  | boolean
-  | null
-  | { [key: string]: Json | undefined }
-  | Json[]
+export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[]
 
 export interface Database {
   public: {
@@ -33,11 +27,11 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "recipe_ingredients_user_id_fkey"
-            columns: ["user_id"]
+            foreignKeyName: 'recipe_ingredients_user_id_fkey'
+            columns: ['user_id']
             isOneToOne: false
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            referencedRelation: 'users'
+            referencedColumns: ['id']
           }
         ]
       }
@@ -77,11 +71,11 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "recipes_user_id_fkey"
-            columns: ["user_id"]
+            foreignKeyName: 'recipes_user_id_fkey'
+            columns: ['user_id']
             isOneToOne: false
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            referencedRelation: 'users'
+            referencedColumns: ['id']
           }
         ]
       }
@@ -130,11 +124,11 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "weekmenu_user_id_fkey"
-            columns: ["user_id"]
+            foreignKeyName: 'weekmenu_user_id_fkey'
+            columns: ['user_id']
             isOneToOne: false
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            referencedRelation: 'users'
+            referencedColumns: ['id']
           }
         ]
       }
@@ -159,18 +153,18 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: "weekmenu_days_user_id_fkey"
-            columns: ["user_id"]
+            foreignKeyName: 'weekmenu_days_user_id_fkey'
+            columns: ['user_id']
             isOneToOne: false
-            referencedRelation: "users"
-            referencedColumns: ["id"]
+            referencedRelation: 'users'
+            referencedColumns: ['id']
           },
           {
-            foreignKeyName: "weekmenu_days_weekmenu_fkey"
-            columns: ["weekmenu"]
+            foreignKeyName: 'weekmenu_days_weekmenu_fkey'
+            columns: ['weekmenu']
             isOneToOne: false
-            referencedRelation: "weekmenu"
-            referencedColumns: ["id"]
+            referencedRelation: 'weekmenu'
+            referencedColumns: ['id']
           }
         ]
       }
