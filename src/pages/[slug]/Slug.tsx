@@ -1,9 +1,9 @@
-import { useRouter } from "next/router";
-import Link from "next/link";
-import * as Styled from "./index.styled";
+import { useRouter } from 'next/router'
+import Link from 'next/link'
+import * as Styled from './index.styled'
 
 export default function Page() {
-  const router = useRouter();
+  const router = useRouter()
   return (
     <div>
       <Styled.Title>Post: {router.query.slug}</Styled.Title>
@@ -19,5 +19,5 @@ export default function Page() {
         </li>
       </ul>
     </div>
-  );
+  )
 }

@@ -1,20 +1,20 @@
 /** @type {import('next').NextConfig} */
 
-const StylelintPlugin = require("stylelint-webpack-plugin"); // line to add
+const StylelintPlugin = require('stylelint-webpack-plugin') // line to add
 const nextConfig = {
   reactStrictMode: true,
   i18n: {
-    locales: ["nl-NL"],
-    defaultLocale: "nl-NL",
+    locales: ['nl-NL'],
+    defaultLocale: 'nl-NL'
   },
   trailingSlash: true,
   compiler: {
-    styledComponents: true,
+    styledComponents: true
   },
   webpack: (config, options) => {
-    config.plugins.push(new StylelintPlugin());
-    return config;
-  },
-};
+    config.plugins.push(new StylelintPlugin())
+    return config
+  }
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig

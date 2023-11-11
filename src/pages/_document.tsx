@@ -1,5 +1,5 @@
-import { FunctionComponent } from "react";
-import { Html, Head, Main, NextScript } from "next/document";
+import { FunctionComponent } from 'react'
+import { Html, Head, Main, NextScript } from 'next/document'
 
 const Document: FunctionComponent = () => {
   return (
@@ -11,6 +11,6 @@ const Document: FunctionComponent = () => {
         <NextScript />
       </body>
     </Html>
-  );
-};
-export default Document;
+  )
+}
+export default Document
