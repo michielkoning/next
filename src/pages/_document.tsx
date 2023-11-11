@@ -1,10 +1,9 @@
-import { FunctionComponent } from 'react'
-import { Html, Head, Main, NextScript } from 'next/document'
+import { FunctionComponent } from "react";
+import { Html, Head, Main, NextScript } from "next/document";
 
 const Document: FunctionComponent = () => {
   return (
     <Html lang="en">
-
       <link rel="manifest" href="/manifest.json" />
       <Head />
       <body>
@@ -12,6 +11,6 @@ const Document: FunctionComponent = () => {
         <NextScript />
       </body>
     </Html>
-  )
-}
-export default Document
+  );
+};
+export default Document;

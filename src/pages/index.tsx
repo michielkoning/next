@@ -1,11 +1,7 @@
-import Link from 'next/link'
-import styled from 'styled-components';
-
-
+import Link from "next/link";
+import styled from "styled-components";
 
 export default function Home() {
-
-
   return (
     <div>
       <p>test</p>
@@ -23,5 +19,5 @@ export default function Home() {
         </li>
       </ul>
     </div>
-  )
+  );
 }
