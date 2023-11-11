@@ -8,6 +8,7 @@ const List = styled.ul`
 
 const ListItem = styled.li`
   padding-block: 0.25em;
+  padding-block: 0.a;
 `
 
 export { List, ListItem }

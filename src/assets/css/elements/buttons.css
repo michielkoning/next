@@ -1,0 +1,41 @@
+button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  appearance: none;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0;
+  line-height: var(--line-height-base);
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.btn-link,
+a {
+  color: var(--color-primary);
+  text-decoration-thickness: 1px;
+  text-decoration-style: solid;
+  text-underline-offset: 0.25em;
+  transition: text-decoration-thickness var(--animation);
+
+  &:hover {
+    text-decoration-thickness: 3px;
+  }
+
+  @media (--print) {
+    &::after {
+      content: ' (' attr(href) ') ';
+      font-size: 0.8em;
+      font-weight: normal;
+    }
+  }
+}

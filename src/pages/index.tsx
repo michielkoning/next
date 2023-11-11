@@ -2,7 +2,6 @@ import { FormEvent, FunctionComponent, useEffect, useState } from 'react'
 import Router from 'next/router'
 import { getAuthenticatedUserFromSession } from './../utils/passage'
 import { getSupabase } from '../utils/supabase'
-import { PassageUser } from '@passageidentity/passage-elements/passage-user'
 import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
 import { Tables } from '@/types/Tables'
 import { RecipesList } from '@/components/Recipes/RecipesList/RecipesList'
@@ -65,28 +64,19 @@ const Dashboard: FunctionComponent<InferGetServerSidePropsType<typeof getServerS
     setTodos([...todos, res])
   }
 
-  const signOut = async () => {
-    new PassageUser().signOut()
-    Router.push('/login')
-  }
-
   return (
     <div>
+      <h1>Welcome {userID}! </h1>
+      <br></br>
       <div>
-        <h1>Welcome {userID}! </h1>
-        <br></br>
-        <button onClick={signOut}>Sign Out</button>
-        <br></br>
-        <div>
-          <RecipesList recipes={todos} />
-        </div>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Todo: <input type="text" name="todo" />
-          </label>
-          <button>Submit</button>
-        </form>
+        <RecipesList recipes={todos} />
       </div>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Todo: <input type="text" name="todo" />
+        </label>
+        <button>Submit</button>
+      </form>
     </div>
   )
 }

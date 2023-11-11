@@ -10,9 +10,9 @@
     "supabase-gen": "supabase gen types typescript --project-id citvrgpihdclyhkkwfer --schema public > src/types/Supabase.ts "
   },
   "dependencies": {
-    "@passageidentity/passage-elements": "^1.2.1",
-    "@passageidentity/passage-node": "^2.1.2",
-    "@supabase/supabase-js": "^2.12.1",
+    "@passageidentity/passage-elements": "^1.16.0",
+    "@passageidentity/passage-node": "^2.6.0",
+    "@supabase/supabase-js": "^2.38.4",
     "@types/jsonwebtoken": "^9.0.5",
     "jsonwebtoken": "^9.0.2",
     "next": "14.0.2",
@@ -28,6 +28,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.0.2",
     "eslint-config-prettier": "^9.0.0",
+    "postcss-styled-syntax": "^0.5.0",
     "prettier": "^3.0.3",
     "stylelint": "^15.11.0",
     "stylelint-config-idiomatic-order": "^9.0.0",
