@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import styled from 'styled-components';
-import * as Styled from './index.styled'
 
 export default function Home() {
 
