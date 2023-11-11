@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import * as Styled from './index.styled'
+import * as Styled from './Slug.styled'
 
 export default function Page() {
   const router = useRouter()
