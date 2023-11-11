@@ -1,11 +1,12 @@
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import * as Styled from './index.styled'
 
 export default function Page() {
   const router = useRouter()
   return (
     <div>
-      <p>Post: {router.query.slug}</p>
+      <Styled.Title>Post: {router.query.slug}</Styled.Title>
       <ul>
         <li>
           <Link href="/">Home</Link>

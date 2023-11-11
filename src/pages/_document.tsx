@@ -1,12 +1,11 @@
+import { FunctionComponent } from 'react'
 import { Html, Head, Main, NextScript } from 'next/document'
 
- 
-
-export default function Document() {
+const Document: FunctionComponent = () => {
   return (
     <Html lang="en">
 
-      
+      <link rel="manifest" href="/manifest.json" />
       <Head />
       <body>
         <Main />
@@ -15,3 +14,4 @@ export default function Document() {
     </Html>
   )
 }
+export default Document
