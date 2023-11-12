@@ -5,7 +5,9 @@ import { getSupabase } from '../utils/supabase'
 import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
 import { Tables } from '@/types/Tables'
 import { RecipesList } from '@/components/Recipes/RecipesList/RecipesList'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import useRecipesStore from '@/store/useRecipesStore'
+import { FormAddRecipe } from '@/components/FormAddRecipe'
+
 
 export const getServerSideProps = (async ({ req, res }) => {
   const loginProps = await getAuthenticatedUserFromSession(req, res)
@@ -36,51 +38,29 @@ export const getServerSideProps = (async ({ req, res }) => {
   initialTodos: Tables<'todo'>[]
 }>
 
-type Inputs = {
-  todo: string
-}
-
 const Dashboard: FunctionComponent<InferGetServerSidePropsType<typeof getServerSideProps>> = ({
   isAuthorized,
   userID,
   initialTodos
 }) => {
-  const [todos, setTodos] = useState(initialTodos)
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors }
-  } = useForm<Inputs>()
+  const setRecipes = useRecipesStore((state) => state.setRecipes)
+
+  useEffect(() => {
+    setRecipes(initialTodos)
+  })
+
   useEffect(() => {
     if (!isAuthorized) {
       Router.push('/login')
     }
   })
 
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    const res = await fetch('/api/addTodo', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ ...data, userID })
-    }).then((res) => res.json())
-    setTodos([...todos, res])
-  }
 
   return (
     <>
-      <RecipesList recipes={todos} />
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <label>Todo</label>
-          <input type="text" {...register('todo', { required: true })} />
-          {errors.todo && <span>This field is required</span>}
-        </div>
-        <button type="submit">Submit</button>
-      </form>
+      <RecipesList />
+      <FormAddRecipe userID={userID} />
     </>
   )
 }
