@@ -2,21 +2,20 @@ import useRecipesStore from '@/store/useRecipesStore'
 import { FunctionComponent } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
-type Inputs = {
+type FormAddRecipe = {
   todo: string
 }
 
 export const FormAddRecipe: FunctionComponent<{ userID: string }> = ({ userID }) => {
-
   const {
     register,
     handleSubmit,
     formState: { errors }
-  } = useForm<Inputs>()
+  } = useForm<FormAddRecipe>()
 
   const addRecipes = useRecipesStore((state) => state.addRecipe)
 
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+  const onSubmit: SubmitHandler<FormAddRecipe> = async (data) => {
     const res = await fetch('/api/addTodo', {
       method: 'POST',
       headers: {

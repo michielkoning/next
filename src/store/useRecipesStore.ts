@@ -2,10 +2,9 @@ import { Tables } from '@/types/Tables'
 import { create } from 'zustand'
 
 type RecipeState = {
-  recipes: Tables<'todo'>[],
+  recipes: Tables<'todo'>[]
   setRecipes: (recipes: Tables<'todo'>[]) => void
   addRecipe: (recipe: Tables<'todo'>) => void
-
 }
 
 const useRecipesStore = create<RecipeState>((set) => ({
@@ -23,7 +22,5 @@ const useRecipesStore = create<RecipeState>((set) => ({
     })
   }
 }))
-
-
 
 export default useRecipesStore

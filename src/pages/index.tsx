@@ -8,7 +8,6 @@ import { RecipesList } from '@/components/Recipes/RecipesList/RecipesList'
 import useRecipesStore from '@/store/useRecipesStore'
 import { FormAddRecipe } from '@/components/FormAddRecipe'
 
-
 export const getServerSideProps = (async ({ req, res }) => {
   const loginProps = await getAuthenticatedUserFromSession(req, res)
 
@@ -43,7 +42,6 @@ const Dashboard: FunctionComponent<InferGetServerSidePropsType<typeof getServerS
   userID,
   initialTodos
 }) => {
-
   const setRecipes = useRecipesStore((state) => state.setRecipes)
 
   useEffect(() => {
@@ -55,7 +53,6 @@ const Dashboard: FunctionComponent<InferGetServerSidePropsType<typeof getServerS
       Router.push('/login')
     }
   })
-
 
   return (
     <>
