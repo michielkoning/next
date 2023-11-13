@@ -13,7 +13,7 @@ export const getServerSideProps = (async ({ req, res }) => {
 
   if (loginProps?.isAuthorized) {
     const supabase = getSupabase(loginProps.userID)
-    const { data } = await supabase.from('todo').select().is('is_complete', false)
+    const { data } = await supabase.from('todo').select()
 
     return {
       props: {
