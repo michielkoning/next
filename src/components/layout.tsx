@@ -2,6 +2,7 @@ import { ReactNode } from 'react'
 import Router from 'next/router'
 import { PassageUser } from '@passageidentity/passage-elements/passage-user'
 import { CenterWrapper } from './CenterWrapper'
+import Header from './Header'
 
 export default function Layout({ children }: { children?: ReactNode }) {
   const signOut = async () => {
@@ -10,6 +11,7 @@ export default function Layout({ children }: { children?: ReactNode }) {
   }
   return (
     <>
+      <Header />
       <header>
         <CenterWrapper>
           <button onClick={signOut}>Sign Out</button>

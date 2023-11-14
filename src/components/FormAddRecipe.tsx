@@ -1,6 +1,7 @@
 import useRecipesStore from '@/store/useRecipesStore'
 import { FunctionComponent } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import InputText from './InputText'
 
 type FormAddRecipe = {
   todo: string
@@ -10,12 +11,13 @@ export const FormAddRecipe: FunctionComponent<{ userID: string }> = ({ userID })
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    resetField
   } = useForm<FormAddRecipe>()
 
   const addRecipes = useRecipesStore((state) => state.addRecipe)
 
   const onSubmit: SubmitHandler<FormAddRecipe> = async (data) => {
+    'use server'
     const res = await fetch('/api/addTodo', {
       method: 'POST',
       headers: {
@@ -29,11 +31,7 @@ export const FormAddRecipe: FunctionComponent<{ userID: string }> = ({ userID })
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <label>Todo</label>
-        <input type="text" {...register('todo', { required: true })} />
-        {errors.todo && <span>This field is required</span>}
-      </div>
+      <input type="text" id="tot" {...register('todo', { required: true })} />
       <button type="submit">Submit</button>
     </form>
   )

@@ -1,7 +1,7 @@
 import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
 
-import PassageLogin from './../../components/login'
-import { getAuthenticatedUserFromSession } from './../../utils/passage'
+import PassageLogin from '../../components/login'
+import { getAuthenticatedUserFromSession } from '../../utils/passage'
 import { FunctionComponent, useEffect } from 'react'
 import Router from 'next/router'
 
